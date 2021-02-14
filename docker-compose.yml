@@ -1,0 +1,17 @@
+version: "3"
+services:
+  server:
+    container_name: node-api
+    restart: always
+    build: ./
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "5000:3000"
+    links:
+      - mongo
+  mongo:
+    container_name: server-api-mongo
+    image: mongo
+    ports:
+      - "27018:27017"
